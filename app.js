@@ -42,7 +42,7 @@ const convertStateObjecttoResponseObject = dbObject => {
 const convertDistrictObjectToRResponseObject = dbObject => {
   return {
     districtId: dbObject.district_id,
-    district_name: dbObject.district_name,
+    districtName: dbObject.district_name,
     stateId: dbObject.state_id,
     cases: dbObject.cases,
     cured: dbObject.cured,
@@ -78,7 +78,7 @@ app.post('/login', async (request, response) => {
   const databaseUser = await database.get(selectUserQuery)
   if (databaseUser === undefined) {
     request.status(400)
-    request.send('Inavlid user')
+    request.send('Invalid user')
   } else {
     const isPasswordMatched = await bcrypt.compare(
       password,
